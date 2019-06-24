@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jquery_exercise3</title>
+  </head>
+  <body>
+      <div id="demo"></div>
+      <button id="btn1">Click here</button>
+  </body>
+
+  <script src="jquery_library.js"></script>
+  <script>
+    $("#demo").css({
+      "background":"blue",
+      "color":"white"
+    })
+
+    var person = prompt("Please enter your name", "name");
+    if (person != null) {
+      document.getElementById("demo").innerHTML =
+      "Hello " + person + "!";
+    }
+
+    $(function(){
+      $("#btn1").on("click", function(){
+        $("#demo").css({"background":"green"});
+      });
+    });
+
+  </script>
+
+</html>

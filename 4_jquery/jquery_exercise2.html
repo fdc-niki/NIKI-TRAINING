@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jquery_exercise2</title>
+  </head>
+  <body>
+      <div id="demo"></div>
+  </body>
+
+  <script src="jquery_library.js"></script>
+  <script>
+    $("#demo").css({
+      "background":"blue",
+      "color":"white"
+    })
+
+    var person = prompt("Please enter your name", "name");
+    if (person != null) {
+      document.getElementById("demo").innerHTML =
+      "Hello " + person + "!";
+    }
+
+  </script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise13</title>
+</head>
+
+<body>
+  <div id="traffic_light" style="border: 1px solid grey; padding: 10px; width: 52px;">
+  	<div class="red_light" style="height: 50px; width: 50px; border-radius: 25px; border: 1px solid grey;"></div>
+  	<div class="yellow_light" style="height: 50px; width: 50px; border-radius: 25px; border: 1px solid grey;"></div>
+  	<div class="green_light" style="height: 50px; width: 50px; border-radius: 25px; border: 1px solid grey;"></div>
+  </div>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function() {
+
+    $(".green_light").css("background", "green");
+
+    setInterval(function(){
+      setTimeout(function(){
+        $(".red_light").css("background", "none");
+        $(".green_light").css("background", "green");
+      }, 0);
+      setTimeout(function(){
+        $(".green_light").css("background", "none");
+        $(".yellow_light").css("background", "yellow");
+      }, 6000);
+      setTimeout(function(){
+        $(".yellow_light").css("background", "none");
+        $(".red_light").css("background", "red");
+      }, 9000);
+    }, 15000);
+
+
+  });
+
+
+
+</script>
+</html>
