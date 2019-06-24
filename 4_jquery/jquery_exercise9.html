@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jquery_exercise9</title>
+  </head>
+  <body>
+    <button>Change the 4th line background</button>
+    <ul>
+      <li class="fdc-1">FDC</li>
+      <li class="fdc-2">FDC</li>
+      <li class="fdc-3">FDC</li>
+      <li class="fdc-4">FDC</li>
+    </ul>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("button").click(function() {
+        $(".fdc-4").css("background", "blue");
+      });
+    });
+
+  </script>
+</html>

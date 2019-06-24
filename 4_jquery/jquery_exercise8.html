@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise8</title>
+</head>
+
+<body>
+  <button>insert a div tag!</button>
+  <div id="parent_fdc_div">fdfd</div>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function() {
+    $("button").click(function() {
+      var parent_fdc_div = $("#parent_fdc_div").val();
+      var copy = $("#parent_fdc_div").clone();
+      copy.find('#parent_fdc_div').html(parent_fdc_div);
+      $("#parent_fdc_div").append(copy);
+    });
+  });
+
+</script>
+</html>

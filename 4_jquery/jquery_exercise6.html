@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise6</title>
+  <style>
+    div{
+       background-color: purple;
+       height: 100px;
+       width: 100px;
+       margin: 5px;
+       float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn1">HOW MANY ELEMENTS DO I HAVE?</button>
+  <p></p>
+  <div></div>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function(){
+    $( "p" ).text( "There is " + 1 + " element." +
+    " Click to add more.");
+    $("#btn1").click(function() {
+      $(document.body).append($("<div>"));
+      var n = $("div").length;
+      $( "p" ).text( "There are " + n + " elements." +
+      " Click to add more.");
+    });
+  });
+
+</script>
+</html>
