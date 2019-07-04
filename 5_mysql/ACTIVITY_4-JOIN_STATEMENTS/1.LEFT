@@ -1,0 +1,5 @@
+SELECT address.address_id, address.address, city.city
+FROM address
+LEFT JOIN city
+ON address.city_id = city.city_id
+WHERE address.address_id = 5 OR address.address_id = 10 OR address.address_id = 15;

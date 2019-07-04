@@ -1,0 +1,5 @@
+SELECT city.city_id, city.city, address.address
+FROM address
+RIGHT JOIN city
+ON address.city_id = city.city_id
+WHERE city.city_id = 299
