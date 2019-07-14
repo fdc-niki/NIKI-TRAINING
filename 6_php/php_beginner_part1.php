@@ -2,13 +2,16 @@
 
 $string = "This is a string";
 $number = 2.5;
-$boolean = True;
+$bool_value = True;
 $array = ["Lucy", "Panda", "Grizzly", "Hunter"];
 
 echo $string, "<br>";
 echo $number, "<br>";
-if (is_bool($boolean) === true) {
-    echo "true", "<br>";
+if ($bool_value) {
+    echo "true";
+} else {
+    echo "false";
 }
+echo "<br>";
 echo $array[0], $array[1], $array[2], $array[3];
 ?>
