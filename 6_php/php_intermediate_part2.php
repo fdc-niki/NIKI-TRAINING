@@ -8,7 +8,7 @@
 
   print_r($countries);
   echo "<br>";
-  echo $countries["America"], "<br>";
+  echo $countries["America"]. "<br>";
   echo count($countries);
   echo "<br>";
   $countries["China"] = "Beijing";
