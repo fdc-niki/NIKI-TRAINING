@@ -35,7 +35,7 @@
                 <?php
                     if(isset($_POST["submit"]) && $_POST["private"] == "Yes"){
                         echo "Note: User wants information to be private <br>";
-                    } else {
+                    } else if(isset($_POST["submit"])){
                         echo "Username: ". $_POST["username"]. "<br>";
                         echo "Password: ". $_POST["password"]. "<br>";
                         echo "Firstname: ". $_POST["firstname"]. "<br>";
