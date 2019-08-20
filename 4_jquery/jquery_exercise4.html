@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise4</title>
+</head>
+
+<body>
+  <div id="demo"></div>
+  <button id="btn1">Click here</button>
+
+  <div id="fdc_div_element" style="background-color: purple; height: 500px; width: 100%"></div>
+  <button id="btn2">WHAT COLOR AM I?</button>
+  <p></p>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $("#demo").css({
+    "background":"blue",
+    "color":"white"
+  })
+
+  var person = prompt("Please enter your name", "name");
+  if (person != null) {
+    document.getElementById("demo").innerHTML =
+    "Hello " + person + "!";
+  }
+
+  $(function(){
+    $("#btn1").on("click", function(){
+      $("#demo").css({"background":"green"});
+    });
+  });
+
+
+  $("#btn2").click(function(){
+    var color = $(this).css("background-color");
+    $("p").html("That background color is " + color + ".");
+  });
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+Syntax
+SELECT * FROM customer
+選択 全て 顧客から
+
+自分で項目を決めて検索したい場合
+select emp_no, first_name, last_name from employees
+
+select * from employees
+
+ハイフン2つでコメントになる
+--select emp_no, first_name, last_name from employees
+
+項目名を変える
+select emp_no as "Employee_ID" from employees
+
+名前を省略する事
+ALIAS
+例）Employee = emp
+
+Mの従業員のみ全て選択してください
+select * from employees where gender = "M"
+
+ジェンダーの種類がいくつあるか検索
+select DISTINCT gender from employees;
+
+select DISTINCT last_name from "employees"
+
+select COUNT(emp_no) from employees where gender = "walf"
+
+select * from "employees" order by birthday asc
+select * from "employees" order by birthday desc
+
+
+select * from employees where gender = "M" AND birth_date > "1965-01-01";
+
+select
+  *
+from
+  employees
+where
+  gender = "M"
+  and birth_date >= "1965-01-01";
+  or name = "Takahito"
+
+
+  select
+    *
+  from
+    employees
+  where
+    (gender = "M"
+    and birth_date >= "1965-01-01";
+    and name = "Takahito")
+
+    or
+
+    (gender = "F"
+    and birth_date >= "1965-01-01");

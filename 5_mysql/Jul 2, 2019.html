@@ -1,0 +1,25 @@
+select * from "employees" where first_time like "%Du%";
+ファーストネームにDuのワードを持っている従業員を探す
+Du%にすると、ファーストネームの最初にDuを持っているものを探す
+%Duは最後
+
+phpmyadminでは日付はyyyy-mm-ddにする必要がある
+
+INSERT INTO 'employees'
+('emp_no', 'birthday', 'first_name'~~~)などのカラム
+VALUES ('999999', '2019-07-02', 'sample'~~~)などのカラム内容
+従業員情報を追加する際のSQL
+追加したい内容だけカラムを並べる
+idをAuto Inclementにしておくと、idは追加しなくても自動的に次の数字に変更してくれる
+
+DELETE FROM 'employees' WHERE 'employees', 'emp_no' = 999999;
+DELETEはSELECTの文法をそのまま使える
+
+UPDATE
+  'employees'
+SET
+  'first_name' = 'lester',
+  'lsat_name' = 'sample'
+where
+  'employees'.'emp_no' = 999997;
+従業員情報をアップデートする場合

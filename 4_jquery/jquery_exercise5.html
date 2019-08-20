@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise5</title>
+</head>
+
+<body>
+  <div id="fdc_div_element" style="height: 200px; width: 200px;"></div>
+  <button id="btn1">WHAT'S MY HEIGHT AND WIDTH?</button>
+  <p class="height"></p>
+  <p class="width"></p>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+$(document).ready(function($){
+  $("#fdc_div_element").css({
+    "background-color": "purple",
+    "position": "relative"
+  });
+
+  function showHeight(element, height){
+    $(".height").text("The height for the " + element + "is " + height + "px.");
+  }
+  function showWidth(element, width){
+    $(".width").text("The width for the " + element + "is " + width + "px.");
+  }
+  $("#btn1").click(function(){
+    showHeight("#fdc_div_element ", $("div").height());
+    showWidth("#fdc_div_element ", $("div").width());
+  });
+});
+</script>
+</html>
+
+//これが正解
+<div>
+  Width: <span class=""></span>
+</div>
+
+$("#order").click(function(){
+  var input_height = $("#food").height;
+
+  &("#order").html(input_width);
+});

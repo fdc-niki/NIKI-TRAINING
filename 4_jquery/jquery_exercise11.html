@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise11</title>
+</head>
+
+<body>
+  <label for="">What is your favorite food?:</label>
+  <input type="text" id="fdc_textbox">
+  <button>Submit</button>
+  <div id="fdc_text_ouput"></div>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function() {
+    $("button").click(function(){
+      var fdc_textbox = $("#fdc_textbox").val();
+      var copy = $("#fdc_textbox").clone();
+      $("#fdc_text_ouput").text(fdc_textbox);
+
+    });
+  });
+
+</script>
+</html>

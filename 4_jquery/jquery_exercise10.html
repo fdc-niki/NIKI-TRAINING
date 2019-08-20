@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise10</title>
+</head>
+
+<body>
+  <h1>Hide me 1!</h1>
+  <h1>Hide me 2!</h1>
+  <h1>Hide me 3!</h1>
+  <h1>Hide me 4!</h1>
+  <h1>Hide me 5!</h1>
+  <h1>Hide me 6!</h1>
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function() {
+    $(document).on("click", "h1", function() {
+      $(this).hide(200);
+    });
+  });
+
+</script>
+</html>

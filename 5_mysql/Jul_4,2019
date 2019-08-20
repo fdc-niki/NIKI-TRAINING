@@ -1,0 +1,14 @@
+LFET join - INNER join - RIGHT join
+
+SELECT * FROM address
+LEFT JOIN city
+ON city.city_id = address.city_id
+WHERE address.address_id = 1;
+
+JoinさせるテーブルのIDがプライマリーである必要あり？
+
+joinさせるとカラムが長くなるので、それを防止するためには
+SELECT users.id, users.nickname, users.email, lesson_schedules.lesson_time, lesson_schedules.teacher_id
+と、指定すると良い
+
+RIGHT JOINは使うことが無い　LEFTで良い。

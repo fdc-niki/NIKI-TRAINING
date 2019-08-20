@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery exercise12</title>
+</head>
+
+<body>
+  <input type="text" id="fdc_textbox">
+  <input type="checkbox" id="fdc_checkbox">
+</body>
+
+<script src="jquery_library.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#fdc_textbox").keyup(function() {
+      var theText = $(this).val();
+      if (theText == "fdc"){
+        $("#fdc_checkbox").prop("checked", true);
+      } else {
+        $("#fdc_checkbox").prop("checked", false);
+      }
+    });
+  });
+
+</script>
+</html>
