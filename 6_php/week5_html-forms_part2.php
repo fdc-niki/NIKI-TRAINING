@@ -33,8 +33,7 @@
         <div class="">
             <h3>
                 <?php
-                if(isset($_POST["submit"])){
-                    if(isset($_POST["private"]) && $_POST["private"] == "Yes"){
+                    if(isset($_POST["submit"]) && $_POST["private"] == "Yes"){
                         echo "Note: User wants information to be private <br>";
                     } else {
                         echo "Username: ". $_POST["username"]. "<br>";
@@ -52,7 +51,6 @@
                         echo "Note: User information can be public <br>";
                         // display();
                     }
-                }
                 ?>
             </h3>
         </div>
