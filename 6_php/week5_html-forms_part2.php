@@ -28,28 +28,30 @@
                 Female<input type="radio" name="gender" value="Female">
                 Male<input type="radio" name="gender" value="Male"><br><br>
             Please make my information private: <input type="checkbox" name="private" value="Yes"><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" name="submit" value="Submit">
         </form>
         <div class="">
             <h3>
                 <?php
-                if(isset($_POST["private"]) && $_POST["private"] == "Yes"){
-                    echo "Note: User wants information to be private <br>";
-                } else {
-                    echo "Username: ". $_POST["username"]. "<br>";
-                    echo "Password: ". $_POST["password"]. "<br>";
-                    echo "Firstname: ". $_POST["firstname"]. "<br>";
-                    echo "Lastname: ". $_POST["lastname"]. "<br>";
-                    echo "Email Address: ". $_POST["email"]. "<br>";
-                    echo "Birthdate: ". $_POST["birthdate"]. "<br>";
-                    echo "Present Address: ". $_POST["presentAddress"]. "<br>";
-                    if(isset($_POST['gender'])){
-                        echo "Gender: ".$_POST['gender']. "<br>";
-                    }else{
-                        echo "Gender: No gender specified <br>";
+                if(isset($_POST["submit"])){
+                    if(isset($_POST["private"]) && $_POST["private"] == "Yes"){
+                        echo "Note: User wants information to be private <br>";
+                    } else {
+                        echo "Username: ". $_POST["username"]. "<br>";
+                        echo "Password: ". $_POST["password"]. "<br>";
+                        echo "Firstname: ". $_POST["firstname"]. "<br>";
+                        echo "Lastname: ". $_POST["lastname"]. "<br>";
+                        echo "Email Address: ". $_POST["email"]. "<br>";
+                        echo "Birthdate: ". $_POST["birthdate"]. "<br>";
+                        echo "Present Address: ". $_POST["presentAddress"]. "<br>";
+                        if(isset($_POST['gender'])){
+                            echo "Gender: ".$_POST['gender']. "<br>";
+                        }else{
+                            echo "Gender: No gender specified <br>";
+                        }
+                        echo "Note: User information can be public <br>";
+                        // display();
                     }
-                    echo "Note: User information can be public <br>";
-                    // display();
                 }
                 ?>
             </h3>
