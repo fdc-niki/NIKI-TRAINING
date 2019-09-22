@@ -28,28 +28,28 @@ if (isset($_GET["action"]) && ($_GET["action"] == "logout")) {
 // - set to blank for now
 $search_term = "";
 // - if search term is present
-if(isset($_GET["search_submit"])){
-	if(!empty($_GET["user_search_term"])) {
-		$search_term = $_GET["user_search_term"];
-		$sql = "
-			SELECT * FROM
-				'employees'
-			WHERE
-				first_name LIKE '%$search_term%'
-			OR
-				last_name LIKE '$search_term%'
-			OR
-				phone_number LIKE '%$search_term%'
-			OR
-				email_address LIKE '%$search_term%'
-			OR
-				address1 LIKE '%$search_term%'
-			";
-		$result3 = mysqli_query($CONNECTION, $sql) ;
-	}
+if(isset($_GET["search_submit"]) && !empty($_GET["user_search_term"])) {
+	$search_term = $_GET["user_search_term"];
+	$sql = "
+		SELECT * FROM
+			`employees`
+		WHERE
+			`first_name` LIKE '%$search_term%'
+		OR
+			`last_name` LIKE '$search_term%'
+		OR
+			`phone_number` LIKE '%$search_term%'
+		OR
+			`email_address` LIKE '%$search_term%'
+		OR
+			`address1` LIKE '%$search_term%'
+		OR
+			`address2` LIKE '%$search_term%'
+		ORDER BY id DESC
+		";
+	$result = mysqli_query($CONNECTION, $sql) ;
 } else {
-	// this code is for fetching information
-	$sql = "SELECT * FROM `employees` order by id desc";
+	$sql = "SELECT * FROM `employees` ORDER BY id DESC";
 	$result = mysqli_query($CONNECTION, $sql);
 }
 
