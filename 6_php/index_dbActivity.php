@@ -1,5 +1,13 @@
 <?php
 include 'db_connect_dbActivity.php';
+
+if (!isset($_SESSION["is_logged_in"])) {
+	// - if the user is not logged in, redirect to index page
+	header("Location: login_page_dbActivity.php");
+	return false;
+} else {
+	echo "HELLO! ". $_SESSION["is_logged_in"] ."! YOU ARE NOW LOGGED IN!";
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +21,10 @@ include 'db_connect_dbActivity.php';
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+	<form class="" action="" method="post" style="text-align: right">
+		<button type="submit" name="button_logout">LOGOUT!</button>
+	</form>
+
 	<!-- main container class -->
 	<div class="container" style="padding-top: 15px;">
 		<!-- jumbotron section -->

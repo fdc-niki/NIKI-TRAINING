@@ -18,10 +18,23 @@ if (!$CONNECTION) {
 echo "YOU HAVE AN ACTIVE DATABASE CONNECTION!!";
 echo "<hr/>";
 
-// login
-if (isset($_GET["action"]) && ($_GET["action"] == "logout")) {
+// login function
+$login_error = "";
+session_start();
+if(isset($_POST["button_login"])){
+    if(!empty($_POST["admin_id"]) && !empty($_POST["admin_password"])){
+        $_SESSION["is_logged_in"] = $_POST["admin_id"];
+		header("Location: index_dbActivity.php");
+    } else {
+		$login_error_message = "Incorrect your id / password";
+		$login_error = true;
+	}
+}
+
+// logout function
+if (isset($_POST["button_logout"])) {
 	unset($_SESSION["is_logged_in"]);
-	header("Location: login.php");
+	header("Location: login_page_dbActivity.php");
 	return false;
 }
 
