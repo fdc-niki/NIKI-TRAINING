@@ -108,8 +108,58 @@ if (isset($_POST["submit_signout"])) {
 	return false;
 }
 
+// HOME USERS DATA
+$total_pages = 0;
+$current_page = 0;
+$current_offset = 0;
+$per_page = 5;
 
+$search_term = "";
+// - if search term is present
+if(isset($_GET["submit_search"]) && !empty($_GET["search_input"])) {
+	$search_term = $_GET["search_input"];
+	$sql = "
+		SELECT * FROM
+			`users`
+		WHERE
+			`first_name` LIKE '%$search_term%'
+		OR
+			`last_name` LIKE '%$search_term%'
+		OR
+			`email_address` LIKE '%$search_term%'
+		ORDER BY id ASC
+		";
+	$result = mysqli_query($CONNECTION, $sql) ;
+} else if(!isset($_GET["page"])){
+	$sql = "SELECT * FROM `users` ORDER BY id ASC";
+	$result = mysqli_query($CONNECTION, $sql) ;
+} else {
+	if (isset($_GET["page"])) {
+		$current_page = $_GET["page"] - 1;
+	}
 
+	$sql = "
+		SELECT
+			count(id) as total_rows
+		FROM
+			`users`
+	";
+	$count_result = mysqli_query($CONNECTION, $sql);
+	$count_row = mysqli_fetch_assoc($count_result);
+
+	$total_pages = $count_row["total_rows"] / $per_page;
+
+	if ($current_page > 0) {
+		$current_offset = $current_page * $per_page;
+	}
+
+	$sql = "
+		SELECT * FROM
+			`users`
+		LIMIT $per_page OFFSET $current_offset";
+
+	$result = mysqli_query($CONNECTION, $sql);
+}
 
 mysqli_close($CONNECTION);
 ?>
