@@ -31,7 +31,7 @@ if (!isset($_SESSION["is_logged_in"])) {
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-	  <form class="" action="" method="get" name="search_submit">
+	  <form class="" action="" method="get">
 		  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" name="search_input">
 	  </form>
       <ul class="navbar-nav px-3">
@@ -167,24 +167,10 @@ if (!isset($_SESSION["is_logged_in"])) {
 		  		} ?>
 	  		  </tbody>
             </table>
-			<table border="1">
-			<?php
-			// - loop through all the rows
-			while ($row = mysqli_fetch_assoc($result)) {
-			?>
-				<tr>
-					<td><?php echo $row["id"]; ?></td>
-					<td><?php echo $row["first_name"]; ?></td>
-				</tr>
-			<?php
-			}
-			?>
-			</table>
-
 			<?php
 				for ($i=1; $i <= $total_pages; $i++) {
 			?>
-				<a href="home.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+				<a href="home.php?page=<?php echo $i; ?>$search_term=<?php echo $search_term; ?>"><?php echo $i; ?></a>
 			<?php
 				}
 			?>
