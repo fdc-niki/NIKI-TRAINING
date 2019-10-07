@@ -116,66 +116,111 @@ $per_page = 5;
 $search_term = "";
 // - if search term is present
 if(isset($_GET["search_input"]) && !empty($_GET["search_input"])) {
+	$search_term = $_GET["search_input"];
 	if (isset($_GET["page"])) {
 		$current_page = $_GET["page"] - 1;
 	}
+		$sql = "
+			SELECT
+				count(id) as total_rows
+		 	FROM
+				`users`
+			WHERE
+				`first_name` LIKE '%$search_term%'
+			OR
+				`last_name` LIKE '%$search_term%'
+			OR
+				`email_address` LIKE '%$search_term%'
+			";
+		$count_result = mysqli_query($CONNECTION, $sql);
+		$count_row = mysqli_fetch_assoc($count_result);
+		$total_pages = $count_row["total_rows"] / $per_page;
+
+		if ($current_page > 0) {
+			$current_offset = $current_page * $per_page;
+		}
+			$sql = "
+			SELECT
+				*
+			FROM
+				`users`
+			WHERE
+				`first_name` LIKE '%$search_term%'
+			OR
+				`last_name` LIKE '%$search_term%'
+			OR
+				`email_address` LIKE '%$search_term%'
+			ORDER BY id ASC
+			LIMIT $per_page OFFSET $current_offset
+			";
+
+			$result = mysqli_query($CONNECTION, $sql);
+} else if (isset($_GET["page"])) {
+	$current_page = $_GET["page"] - 1;
 	$search_term = $_GET["search_input"];
-	$sql = "
-		SELECT
-			count(id) as total_rows
-	 	FROM
-			`users`
-		WHERE
-			`first_name` LIKE '%$search_term%'
-		OR
-			`last_name` LIKE '%$search_term%'
-		OR
-			`email_address` LIKE '%$search_term%'
-		";
-	$count_result = mysqli_query($CONNECTION, $sql);
-	$count_row = mysqli_fetch_assoc($count_result);
-	$total_pages = $count_row["total_rows"] / $per_page;
 
-	if ($current_page > 0) {
-		$current_offset = $current_page * $per_page;
-	}
-	$sql = "
-		SELECT
-			*
-		FROM
-			`users`
-		WHERE
-			`first_name` LIKE '%$search_term%'
-		OR
-			`last_name` LIKE '%$search_term%'
-		OR
-			`email_address` LIKE '%$search_term%'
-		ORDER BY id ASC
-		LIMIT $per_page OFFSET $current_offset
-		";
-	$result = mysqli_query($CONNECTION, $sql);
+		$sql = "
+			SELECT
+				count(id) as total_rows
+		 	FROM
+				`users`
+			WHERE
+				`first_name` LIKE '%$search_term%'
+			OR
+				`last_name` LIKE '%$search_term%'
+			OR
+				`email_address` LIKE '%$search_term%'
+			";
+		$count_result = mysqli_query($CONNECTION, $sql);
+		$count_row = mysqli_fetch_assoc($count_result);
+		$total_pages = $count_row["total_rows"] / $per_page;
 
+		if ($current_page > 0) {
+			$current_offset = $current_page * $per_page;
+		}
+			$sql = "
+			SELECT
+				*
+			FROM
+				`users`
+			WHERE
+				`first_name` LIKE '%$search_term%'
+			OR
+				`last_name` LIKE '%$search_term%'
+			OR
+				`email_address` LIKE '%$search_term%'
+			ORDER BY id ASC
+			LIMIT $per_page OFFSET $current_offset
+			";
+
+			$result = mysqli_query($CONNECTION, $sql);
 } else {
 	if (isset($_GET["page"])) {
 		$current_page = $_GET["page"] - 1;
 	}
 
+	//1. count the total rows
 	$sql = "
 		SELECT
 			count(id) as total_rows
 		FROM
-			`users`
-	";
+			`users`";
 	$count_result = mysqli_query($CONNECTION, $sql);
 	$count_row = mysqli_fetch_assoc($count_result);
+
+	// - set to total pages
 	$total_pages = $count_row["total_rows"] / $per_page;
 
+	// - divide if current_page is more than 0 or 1
 	if ($current_page > 0) {
 		$current_offset = $current_page * $per_page;
 	}
 
+	// - prepare sql
 	$sql = "
-		SELECT * FROM
+		SELECT
+			*
+		FROM
 			`users`
 		LIMIT $per_page OFFSET $current_offset";
 

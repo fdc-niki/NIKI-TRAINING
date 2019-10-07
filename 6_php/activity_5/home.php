@@ -170,7 +170,7 @@ if (!isset($_SESSION["is_logged_in"])) {
 			<?php
 				for ($i=1; $i <= $total_pages; $i++) {
 			?>
-				<a href="home.php?page=<?php echo $i; ?>$search_term=<?php echo $search_term; ?>"><?php echo $i; ?></a>
+				<a href="home.php?page=<?php echo $i; ?>&search_input=<?php echo $search_term; ?>"><?php echo $i; ?></a>
 			<?php
 				}
 			?>
